@@ -22,7 +22,6 @@ Default admin (seeded on startup if missing): email `makaanadmin@gmail.com` / pa
 | Method | Path | Auth |
 |---|---|---|
 | POST | `/api/auth/login` | Public |
-| GET | `/api/admin/profile` | JWT |
 | PATCH | `/api/admin/profile` | JWT |
 
 See `docs/` for full API documentation.

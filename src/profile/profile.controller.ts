@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, UseGuards } from '@nestjs/common';
+import { Body, Controller, Patch, UseGuards } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -16,16 +16,6 @@ import { UsersService } from '../users/users.service';
 @UseGuards(JwtAuthGuard)
 export class ProfileController {
   constructor(private readonly usersService: UsersService) {}
-
-  @Get()
-  @ApiOperation({ summary: 'Get current admin profile' })
-  async getProfile(@CurrentAdmin() admin: CurrentAdminPayload) {
-    const doc = await this.usersService.findById(admin.adminId);
-    if (!doc) {
-      return null;
-    }
-    return this.usersService.toSafeAdmin(doc);
-  }
 
   @Patch()
   @ApiOperation({ summary: 'Update current admin profile' })

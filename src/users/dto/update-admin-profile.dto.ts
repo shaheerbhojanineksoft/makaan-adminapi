@@ -18,6 +18,9 @@ export class UpdateAdminProfileDto {
   @IsOptional()
   @IsString()
   @MaxLength(40)
+  @Matches(/^\+?[0-9][0-9\s\-()]*[0-9]$/, {
+    message: 'phone must be a valid number (digits only, optional + - spaces)',
+  })
   phone?: string;
 
   @ApiPropertyOptional({ example: 'Karachi, Pakistan' })
